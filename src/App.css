@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+} /*
+ -----> Fonts and colours 
+*/
+@font-face {
+  font-family: PokemonSolid;
+  src: url("./assets/fonts/pokemonsolid.ttf");
+}
+
+body {
+  height: 100vh;
+  background-color: #fff8e3;
+}
+.pokemon-text-cursive {
+  font-family: "Cedarville Cursive", cursive;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+.pokemon-text {
+  font-family: "PokemonSolid", sans-serif;
+  color: #ffcb05;
+  letter-spacing: 5px;
+  text-shadow: rgb(0, 58, 112) 2px 0px 0px,
+    rgb(0, 58, 112) 1.75517px 0.958851px 0px,
+    rgb(0, 58, 112) 1.0806px 1.68294px 0px,
+    rgb(0, 58, 112) 0.141474px 1.99499px 0px,
+    rgb(0, 58, 112) -0.832294px 1.81859px 0px,
+    rgb(0, 58, 112) -1.60229px 1.19694px 0px,
+    rgb(0, 58, 112) -1.97998px 0.28224px 0px,
+    rgb(0, 58, 112) -1.87291px -0.701566px 0px,
+    rgb(0, 58, 112) -1.30729px -1.5136px 0px,
+    rgb(0, 58, 112) -0.421592px -1.95506px 0px,
+    rgb(0, 58, 112) 0.567324px -1.91785px 0px,
+    rgb(0, 58, 112) 1.41734px -1.41108px 0px,
+    rgb(0, 58, 112) 1.92034px -0.558831px 0px;
+}
+
+/* --- Header*/
+header {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+/*
+ -----> Filters bar
+*/
+.filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2rem;
+}
+
+.filter-item label {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.filter-item input,
+.filter-item select {
+  width: 10rem;
+  padding: 0.3rem;
+  font-family: 700;
+  border: 2px solid #6e6e6e;
+  border-radius: 15px;
+}
+
+.filter-item select {
+  cursor: pointer;
+}
+.filter-item input:focus,
+.filter-item select:focus,
+.filter-item input:hover,
+.filter-item select:hover {
+  border: 2px solid #6e6e6e;
+  outline: none;
+}
+
+.pokemon-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+/*
+ -----> Pokemons Grid 
+*/
+.pokemon-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+/*
+ -----> Pokemon Card
+*/
+
+.pokemon-card {
+  min-width: 200px;
+  height: 318px;
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  align-items: center;
+  box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+.pokemon-id {
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.pokemon-id h4 {
+  position: relative;
+  top: -10px;
+  left: -50px;
+}
+.pokemon-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.sprite-container {
+  width: 130px;
+  height: 130px;
+}
+
+.pokemon-sprite {
+  width: 130px;
+}
+
+.type-span {
+  font-weight: 700;
+  color: #fff8e3;
+  background-color: #ffcb05;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-right: 4px;
+  box-shadow: inset 0px 0px 4px #3c3636;
+  text-shadow: rgb(0, 0, 0) 1px 0px 0px, rgb(0, 0, 0) 0.540302px 0.841471px 0px,
+    rgb(0, 0, 0) -0.416147px 0.909297px 0px,
+    rgb(0, 0, 0) -0.989992px 0.14112px 0px,
+    rgb(0, 0, 0) -0.653644px -0.756802px 0px,
+    rgb(0, 0, 0) 0.283662px -0.958924px 0px,
+    rgb(0, 0, 0) 0.96017px -0.279415px 0px;
+}
+/*
+ --- Button
+*/
+.btn {
+  font-family: "Exo 2", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  color: #ffcb05;
+  background-color: rgb(0, 58, 112);
+  padding: 0 4rem;
+  border: none;
+  border-radius: 20px;
+  line-height: 3em;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.btn:first-of-type {
+  margin-bottom: 2rem;
+}
+.btn:hover {
+  box-shadow: 0 0 30px 0 rgba(0, 199, 236, 0.5);
+  background-color: #00c7ec;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+.btn:hover:before {
+  -webkit-animation: shine 0.5s 0s linear;
+  -moz-animation: shine 0.5s 0s linear;
+  animation: shine 0.5s 0s linear;
+}
+.btn:active {
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: box-shadow 0.2s ease-in;
+  -moz-transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in;
+}
+.btn:before {
+  content: "";
+  display: block;
+  width: 0px;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: white;
+  box-shadow: 0 0 15px 3px white;
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+}
+
+@-webkit-keyframes shine {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+@-moz-keyframes shine {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+@keyframes shine {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
