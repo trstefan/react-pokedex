@@ -3,12 +3,16 @@ export const Filters = ({ filters, updateFilters }) => {
   return (
     <div className="filters-container">
       <div className="filter-item">
-        <label htmlFor="Search" className="pokemon-text">
+        <label
+          htmlFor="region_element"
+          className="pokemon-text"
+          id="search_item"
+        >
           Region
         </label>
         <select
           name=""
-          id=""
+          id="region_element"
           value={filters.region}
           onChange={(e) => updateFilters({ region: e.target.value })}
         >
@@ -21,11 +25,12 @@ export const Filters = ({ filters, updateFilters }) => {
         </select>
       </div>
       <div className="filter-item">
-        <label htmlFor="Search" className="pokemon-text">
+        <label htmlFor="type_element" className="pokemon-text">
           Type
         </label>
         <select
           value={filters.type}
+          id="type_element"
           onChange={(e) => updateFilters({ type: e.target.value })}
         >
           {TYPES.map((type) => (
@@ -36,12 +41,12 @@ export const Filters = ({ filters, updateFilters }) => {
         </select>
       </div>
       <div className="filter-item">
-        <label htmlFor="Search" className="pokemon-text">
+        <label htmlFor="sorting_element" className="pokemon-text">
           Sort By
         </label>
         <select
           name=""
-          id=""
+          id="sorting_element"
           value={filters.sortBy}
           onChange={(e) => updateFilters({ sortBy: e.target.value })}
         >
@@ -53,11 +58,12 @@ export const Filters = ({ filters, updateFilters }) => {
         </select>
       </div>
       <div className="filter-item">
-        <label htmlFor="Search" className="pokemon-text">
+        <label htmlFor="search_element" className="pokemon-text">
           Search
         </label>
         <input
           type="text"
+          id="search_element"
           placeholder="Search for a Pokemon"
           value={filters.searchedPokemon}
           onChange={(e) => updateFilters({ searchedPokemon: e.target.value })}

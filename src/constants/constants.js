@@ -121,3 +121,12 @@ export const COLOURS_SECONDARY_TYPE = {
   steel: "#ccccdc",
   fairy: "#e2a9c5",
 };
+
+export const COLOURS_PER_STAT = {
+  hp: "#ff0100",
+  attack: "#f08030",
+  defense: "#f9d02f",
+  "special-attack": "#6790f0",
+  "special-defense": "#78c84f",
+  speed: "#f95887",
+};

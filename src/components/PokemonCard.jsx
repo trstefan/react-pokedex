@@ -6,7 +6,7 @@ import {
   COLOURS_SECONDARY_TYPE,
 } from "../constants/constants";
 
-export const PokemonCard = ({ pokemonDetails }) => {
+export const PokemonCard = ({ pokemonDetails, toggleModal }) => {
   const gradientMix = getColorGradient(pokemonDetails.types);
 
   return (
@@ -15,6 +15,7 @@ export const PokemonCard = ({ pokemonDetails }) => {
       style={{
         background: `radial-gradient(circle at top, ${gradientMix[0]} 35%, ${gradientMix[1]}) 100%`,
       }}
+      onClick={() => toggleModal(pokemonDetails)}
     >
       <div className="pokemon-id pokemon-text">
         {" "}
@@ -23,6 +24,7 @@ export const PokemonCard = ({ pokemonDetails }) => {
       <div className="sprite-container">
         <LazyLoadImage
           src={pokemonDetails.sprites.other["official-artwork"].front_default}
+          alt={pokemonDetails.name}
           className="pokemon-sprite"
         />
       </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { PokemonCard } from "./PokemonCard";
+import { PokemonModal } from "./PokemonModal";
 import {
   getPokemonDetails,
   getPokemonList,
@@ -28,6 +29,8 @@ export const PokemonList = () => {
     sortBy: "id",
     searchedPokemon: "",
   });
+  const [showPokemonModal, setShowPokemonModal] = useState(false);
+  const [detailPokemon, setDetailPokemon] = useState({});
 
   //fetching all pokes without any filters set
   useEffect(() => {
@@ -88,6 +91,16 @@ export const PokemonList = () => {
   const loadMorePokemon = () => {
     setNumPokemon(numPokemon + POKEMONS_PER_LOAD);
   };
+
+  const toggleModal = (pokemonDetails) => {
+    if (pokemonDetails) {
+      setDetailPokemon(pokemonDetails);
+    } else {
+      setDetailPokemon({});
+    }
+    setShowPokemonModal((value) => !value);
+  };
+
   if (isLoading)
     return (
       <div className="loading-screen pokemon-text">
@@ -116,7 +129,11 @@ export const PokemonList = () => {
         <div className="pokemon-grid">
           {" "}
           {displayedPokemons.slice(0, numPokemon).map((pokemon) => (
-            <PokemonCard key={pokemon.name} pokemonDetails={pokemon} />
+            <PokemonCard
+              key={pokemon.name}
+              pokemonDetails={pokemon}
+              toggleModal={toggleModal}
+            />
           ))}
         </div>
         {numPokemon < displayedPokemons.length && (
@@ -125,6 +142,13 @@ export const PokemonList = () => {
           </button>
         )}
       </div>
+      {showPokemonModal && (
+        <PokemonModal
+          toggleModal={toggleModal}
+          detailPokemon={detailPokemon}
+          allPokemonDetails={allPokemonDetails}
+        />
+      )}
     </div>
   );
 };

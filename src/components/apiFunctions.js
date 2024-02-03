@@ -21,6 +21,22 @@ const getPokemonIdFromUrl = (url) => {
   return pokemonId;
 };
 
+const getPokemonEvolution = async (url) => {
+  const evolutions = [];
+  const response = await axios.get(url);
+  const evoData = response.data;
+
+  //bft of evolution tree
+  const searchEvolutionTree = (node, level) => {
+    if (evolutions[level] === undefined) evolutions[level] = [];
+    evolutions[level].push(getPokemonIdFromUrl(node.species.url));
+    node.evolves_to.forEach((child) => searchEvolutionTree(child, level + 1));
+  };
+  searchEvolutionTree(evoData.chain, 0);
+
+  return evolutions;
+};
+
 const formatPokemonName = (name) => {
   // Capitalize each word and change gender letters to the apprpriate symbol
   return name
@@ -37,4 +53,23 @@ const formatPokemonName = (name) => {
     .join(" ");
 };
 
-export { getPokemonList, getPokemonDetails, formatPokemonName };
+const formatStatName = (name) => {
+  if (name === "hp") return "HP";
+
+  return name
+    .toLowerCase()
+    .split("-")
+    .map((s) => {
+      if (s === "special") return "Sp";
+      return s.charAt(0).toUpperCase() + s.substring(1);
+    })
+    .join(" ");
+};
+
+export {
+  getPokemonList,
+  getPokemonDetails,
+  getPokemonEvolution,
+  formatPokemonName,
+  formatStatName,
+};
