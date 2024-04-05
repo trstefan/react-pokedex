@@ -112,7 +112,7 @@ export const PokemonList = () => {
   return (
     <div>
       <header>
-        <p className="pokemon-text">Pokedex</p>
+        <p className="pokemon-text">React PokeDexplorer</p>
         <p className="pokemon-text-cursive">Gotta Catch ‘Em All!</p>
       </header>
       <Filters filters={filters} updateFilters={updateFilters} />
