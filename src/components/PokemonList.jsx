@@ -52,20 +52,26 @@ export const PokemonList = () => {
 
   // Filters
   useEffect(() => {
+    if (allPokemonDetails.length === 0) return;
+
     const start = REGIONS_INFO[filters.region].start;
     const limit = REGIONS_INFO[filters.region].limit;
     const filteredPokemon = allPokemonDetails
       .slice(start, start + limit)
       .filter((pokemon) => {
         return (
-          filters.type === "all" ||
-          pokemon.types.map((type) => type.type.name).includes(filters.type)
+          pokemon && // Add this check
+          (filters.type === "all" ||
+            pokemon.types.map((type) => type.type.name).includes(filters.type))
         );
       })
       .filter((pokemon) => {
-        return formatPokemonName(pokemon.species.name)
-          .toLowerCase()
-          .includes(filters.searchedPokemon.toLowerCase());
+        return (
+          pokemon && // Add this check
+          formatPokemonName(pokemon.species.name)
+            .toLowerCase()
+            .includes(filters.searchedPokemon.toLowerCase())
+        );
       });
 
     // Sort
@@ -85,7 +91,6 @@ export const PokemonList = () => {
 
   const clearFilters = () => {
     setFilters(initialFilters);
-    //console.log(filters);
   };
 
   const loadMorePokemon = () => {
@@ -121,13 +126,12 @@ export const PokemonList = () => {
         <button onClick={clearFilters} className="btn">
           Clear filters
         </button>
-        {displayedPokemons.length == 0 && (
+        {displayedPokemons.length === 0 && (
           <div className="pokemon-text">
             <h3>No Pokemons found! &#58;&#40;</h3>
           </div>
         )}
         <div className="pokemon-grid">
-          {" "}
           {displayedPokemons.slice(0, numPokemon).map((pokemon) => (
             <PokemonCard
               key={pokemon.name}
